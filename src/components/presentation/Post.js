@@ -4,51 +4,39 @@ import config from '../../config';
 
 class Post extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             liked: false,
             screenWidth: Dimensions.get("window").width
-          }
+          };
      }
-
-     likeToggled(){
-         this.setState({
-            liked: !this.state.liked
-         });
-     }
-    componentDidMount(){
+    
+    likeToggled() {
         this.setState({
-            screenWidth: Dimensions.get("window").width,
-        })
+            liked: !this.state.liked
+        });
     }
     render() {
-        const heartIconColor = (this.state.liked) ? "rgb(251, 61,57)" : null;
-
+        const heartIconColor = (this.state.liked) ? "rgb(251,61,57)" : null;
         const imageHeight = Math.floor(this.state.screenWidth + 1.1);
         const imageUri = "https://lh3.googleusercontent.com/b3MqpOjUaRPF__09OwzVSS2nBUZAxu9ufwzdDCU6KMdgvJatzVCPMy2KDJuA1OKxLQQyXEnzPJN7qB3Uxuih9XEx"
         + "=s" +
         imageHeight + "-c";
         
         return (
-            <View backgroundColor="white" style = {{ flex: 1, width: 100 + "%", height: 100 + '%' }}>
-                <View style={ styles.tempNav }>
-                    <Text>Spotogram</Text>
-                </View >
+            <View backgroundColor="white" style={{ flex: 1, width: "100%" }}>
                 <View style={ styles.userBar }>
                     <View style= {{flexDirection: "row", alignItems: "center"}} >
-                    
-                    < Image style={ styles.userPic }
+                        < Image style={ styles.userPic }
                         source = {{
                         uri: "https://lh3.googleusercontent.com/5VtQqeEUHQqVfHByUEHsTYC0bNj--wYpTow0Gleq_Ss2wfTgZ89Fvd7aICM-kbq8M7l4IG9X1LmHE0ArxNRjEdin4vk"
                         }}
-                    />
-                    <Text style={{ marginLeft: 10 }}>Jubei</Text>
-                </ View>
-                   <View>
+                        />
+                        <Text style={{ marginLeft: 10 }}>Jubei</Text>
+                    </ View>
+                    <View style={{ alignItems: "center" }}>
                         <Text style={{ fontSize: 30 }}>...</Text>
                     </View>
-                </View>
-                <View>
                 </View>
                 <TouchableOpacity
                     activeOpacity={0.7}
@@ -61,24 +49,25 @@ class Post extends Component {
                     source = {
                      {
                          uri: imageUri
-                     }
-                 }
+                     }}
                  />
                  </TouchableOpacity>
-                 <View style={styles.iconBar} >
+                 <View 
+                    style={styles.iconBar}>
                     <Image style={[styles.icon, {height: 40, width: 45, tintColor: heartIconColor}]} source={config.images.heartIcon} />
                     <Image style={[styles.icon, {height: 36, width: 36}]} source={config.images.bubbleIcon} />
-                    <Image style={[styles.icon, {height: 40, width: 30}]} source={config.images.arrowIcon} />
+                    <Image resizeMode="stretch" style={[styles.icon, {height: 40, width: 30}]} source={config.images.arrowIcon} />
                  </View>
                  <View style={styles.iconBar}>
-                    < Image style = {
+                    < Image 
+                        style={
                         [styles.icon, {
                             height: 30,
                             width: 30,
                             tintColor: heartIconColor
                         }]
                     }
-                    source = {
+                    source={
                         config.images.heartIcon
                     }
                     />
